@@ -1,0 +1,48 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class gameOverMenu {
+	
+	private JFrame frame;
+	private JButton button1;
+	private JButton button2;
+	private JLabel info;
+	
+	
+	public gameOverMenu() {
+
+		
+		frame = new JFrame("Snake");
+		frame.setLocation(0, 0);
+		frame.setSize(600, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setVisible(true);
+		frame.setLayout(null);
+
+		//frame.getContentPane().setBackground(Color.BLACK);
+
+		info = new JLabel();
+		info.setLocation(90, -100);
+		info.setSize(1000, 500);
+		info.setText("G A M E  O V E R");
+		frame.add(info);
+		info.setFont(new Font("Helvetica", Font.PLAIN,50));
+		info.setBackground(Color.BLUE);
+		
+		button1 = new JButton("Play again?");
+		button1.setLocation(400, 250);
+		button1.setSize(100, 50);
+		frame.add(button1);
+		
+		button2 = new JButton("Main Menu");
+		button2.setLocation(100,250);
+		button2.setSize(100,50);
+		frame.add(button2);
+		
+		JLabel title = new JLabel();
+		title.setVisible(true);
+
+}
+}
