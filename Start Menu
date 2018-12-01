@@ -1,0 +1,98 @@
+//
+import java.awt.*;
+import javax.swing.*;
+ 
+
+public class startMenu {
+
+	private JFrame frame;
+	private JLabel info;
+	private JLabel picture;
+	private JButton button1;
+
+	private JFrame frameKey;
+	private JLabel keys;
+	private JButton button;
+	private ImageIcon snakeImage; 
+	
+	private Snake snake;
+	private JLabel board;
+	
+	
+
+
+
+	public startMenu() {
+
+		frame = new JFrame("Snake");
+		frame.setLocation(0, 0);
+		frame.setSize(600, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setVisible(true);
+		frame.setLayout(null);
+
+		//frame.getContentPane().setBackground(Color.BLACK);
+
+		button1 = new JButton("Start");
+		button1.setLocation(250, 300);
+		button1.setSize(100, 50);
+		frame.add(button1);
+		
+		JLabel title = new JLabel();
+		title.setVisible(true);
+		
+		
+		
+		
+		info = new JLabel();
+		info.setLocation(70, -100);
+		info.setSize(1000, 500);
+		info.setText("S N A K E");
+		frame.add(info);
+		info.setFont(new Font("Helvetica", Font.PLAIN,100));
+		info.setBackground(Color.BLUE);
+		
+
+			button = new JButton();
+			snakeImage = new ImageIcon(new ImageIcon("snake.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+			button.setSize(100,100);
+			button.setIcon(snakeImage);
+		
+		while(true) {
+			try {
+				Thread.sleep(1000);//sleep for that many milliseconds
+				int x = snake.x;
+				int y = snake.y;
+				int directionX = snake.directionX;
+				int directionY = snake.directionY;
+				int newX = x + directionX;
+				int newY = y + directionY;
+				//if out of bounds, show a message
+				//update snake's new position
+				snake.x = newX;
+				snake.y = newY;
+				//change color of the board to display new position of snake
+				//board[x][y].setBackground(Color.white);
+				//board[newX][newY].setBackground(Color.green);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		}
+		
+	}
+	
+	
+
+		
+
+	
+	
+
+
+
+
+
+
