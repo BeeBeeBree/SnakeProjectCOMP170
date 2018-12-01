@@ -11,11 +11,18 @@ public class BoardGraphics {
 	private int size;
 	private Snake snake;
 	private JLabel[][] board;
+	private gameOverMenu gameOver;
+	private SnakePart P1;
+	
 
 	public BoardGraphics() {
 		//sets size of the board to be 50 spaces
 		this.size = 50;
-		snake = new Snake(0, 0, 1, 0); //snake starts at 0,0 moving right
+		snake = new Snake(4, 0, 1, 0); //snake starts at 0,0 moving right
+		SnakePart P1 = new SnakePart(3,0,1,0,snake);
+		SnakePart P2 = new SnakePart(2,0,1,0, snake);
+		SnakePart P3 = new SnakePart(1,0,1,0, snake);
+		SnakePart P4 = new SnakePart(0,0,1,0, snake);
 		
 		//sets up the frame and each of the 50 spaces that the snake can be in
 		JFrame frame = new JFrame("Snake");
@@ -68,10 +75,15 @@ public class BoardGraphics {
 
 		//sets up the "Snake" on the board
 		board[snake.x][snake.y].setBackground(Color.green);
+		board[P1.x][P1.y].setBackground(Color.green);
+		board[P2.x][P2.y].setBackground(Color.green);
+		board[P3.x][P3.y].setBackground(Color.green);
+		board[P4.x][P4.y].setBackground(Color.green);
 		board[10][10].setBackground(Color.red);
 		frame.validate();
 		frame.repaint();
-
+		//Sets up Tail
+		
 		//infinite loop that moves the snake
 		move();
 	}
@@ -82,22 +94,35 @@ public class BoardGraphics {
 				Thread.sleep(1000);//sleep for that many milliseconds
 				int x = snake.x;
 				int y = snake.y;
+				int preX = x-1;
+				int preY = y-1;
 				int directionX = snake.directionX;
 				int directionY = snake.directionY;
 				int newX = x + directionX;
 				int newY = y + directionY;
+				snake.x = newX;
+				snake.y = newY;
+				P1.x = preX;
+				P1.y = preY;
+				
+				
+				
 				//if out of bounds, show a message
 				if (newX >= size || newX < 0 || newY >= size || newY < 0) {
 					JOptionPane.showMessageDialog(null, "Game Over", "Snake", JOptionPane.INFORMATION_MESSAGE);
 					break;
 				}
+				
 				//update snake's new position
-				snake.x = newX;
-				snake.y = newY;
-				//change color of the board to display new position of snake
-				board[x][y].setBackground(Color.white);
+				
+				
+				//}
+				board[preX][preY].setBackground(Color.green);
 				board[newX][newY].setBackground(Color.green);
-			} catch (InterruptedException e) {
+					
+				
+			}
+			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
